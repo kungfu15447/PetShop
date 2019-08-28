@@ -14,9 +14,25 @@ namespace PetShop.Core.ApplicationService.Implementation
         {
             _petRepo = petRepo;
         }
+
+        public Pet CreatePet(Pet pet)
+        {
+            return _petRepo.CreatePet(pet);
+        }
+
+        public Pet DeletePet(Pet pet)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Pet> GetPets()
         {
             return _petRepo.ReadPets().ToList();
+        }
+
+        public Pet UpdatePet(Pet petToUpdate, Pet updatedPet)
+        {
+            throw new NotImplementedException();
         }
     }
 }

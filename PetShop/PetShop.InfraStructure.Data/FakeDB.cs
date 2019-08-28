@@ -49,7 +49,7 @@ namespace PetShop.InfraStructure.Data
                 price = 350
             };
 
-            petList = new List<Pet> { pet, pet2 , pet3};
+            petList = new List<Pet> { pet, pet2, pet3 };
             
         }
     }

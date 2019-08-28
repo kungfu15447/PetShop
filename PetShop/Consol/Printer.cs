@@ -54,6 +54,8 @@ namespace PetShop.Consol
                 selection = parseSelection();
             }
 
+            Console.WriteLine("Thank you for using PetShop");
+            Console.WriteLine("Shutting down...");
             
         }
 
@@ -108,6 +110,13 @@ namespace PetShop.Consol
                     Console.WriteLine("----------------------");
                 }
             }
+        }
+
+        private Pet CreatePet()
+        {
+            Console.Write("Please type the pets name: ");
+            string name = Console.ReadLine();
+            Console.Write("Please type the pets specie: ");
         }
     }
 }
