@@ -207,6 +207,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "PetShop.Core.Entity/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/PetShop.Core.Entity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PetShop.Core.Entity.dll": {}
+        }
       }
     }
   },
@@ -680,11 +690,17 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "PetShop.Core.Entity/1.0.0": {
+      "type": "project",
+      "path": "../PetShop.Core.Entity/PetShop.Core.Entity.csproj",
+      "msbuildProject": "../PetShop.Core.Entity/PetShop.Core.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Microsoft.NETCore.App >= 2.1.0"
+      "Microsoft.NETCore.App >= 2.1.0",
+      "PetShop.Core.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -716,7 +732,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core.Entity\\PetShop.Core.Entity.csproj": {
+              "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core.Entity\\PetShop.Core.Entity.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

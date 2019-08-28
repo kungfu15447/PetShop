@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.Core.Entity", "PetS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.InfraStructure.Data", "PetShop.InfraStructure.Data\PetShop.InfraStructure.Data.csproj", "{A1310158-0EE4-4CD7-A880-C8346DE29CBE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{687A317D-E534-4313-96BE-9534FE82D976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraStructure", "InfraStructure", "{1B9C9176-CE8D-41A2-A536-C90A50743D81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{1F87364A-7CF5-4612-A9E8-8FD617B3DAA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E80C6E4-5D60-40B5-A541-9F7872AF251F} = {1F87364A-7CF5-4612-A9E8-8FD617B3DAA3}
+		{E285F12A-4120-4920-84E8-06FA0C12AC06} = {687A317D-E534-4313-96BE-9534FE82D976}
+		{A4D592BE-FC4C-4A94-81B0-5F7EBCF75AEA} = {687A317D-E534-4313-96BE-9534FE82D976}
+		{A1310158-0EE4-4CD7-A880-C8346DE29CBE} = {1B9C9176-CE8D-41A2-A536-C90A50743D81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34FBC53F-C7EC-41B2-ADE3-303F43C8D8C3}

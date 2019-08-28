@@ -6,14 +6,14 @@ namespace PetShop.Core.Entity
 {
     public class Pet
     {
-        int id { get; set; }
-        string name { get; set; }
-        enum type { Dog, Cat, Snake, BeardedDragon, Elephant, Goat}
-        DateTime birthDate { get; set; }
-        DateTime soldDate { get; set; }
-        string color { get; set; }
-        string previousOwner { get; set; }
-        double price { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public PetTypes type {get; set;}
+        public DateTime birthDate { get; set; }
+        public DateTime soldDate { get; set; }
+        public string color { get; set; }
+        public string previousOwner { get; set; }
+        public double price { get; set; }
 
 
     }
