@@ -38,6 +38,7 @@ namespace PetShop.Consol
                 switch (selection)
                 {
                     case 1:
+                        
                         break;
                     case 2:
                         listAllPets();
@@ -117,6 +118,8 @@ namespace PetShop.Consol
             Console.Write("Please type the pets name: ");
             string name = Console.ReadLine();
             Console.Write("Please type the pets specie: ");
+            return null;
         }
+
     }
 }
