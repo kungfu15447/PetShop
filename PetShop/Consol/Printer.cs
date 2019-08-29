@@ -21,6 +21,9 @@ namespace PetShop.Consol
                 "Show list of pets",
                 "Delete pet",
                 "Update pet",
+                "Show list of pets by type",
+                "Show list of pets ordered by price",
+                "Show the five cheapest pets",
                 "Exit"
             };
         }
@@ -33,7 +36,7 @@ namespace PetShop.Consol
 
             int selection = parseSelection();
 
-            while (selection != 5)
+            while (selection != itemList.Length)
             {
                 Pet pet;
                 switch (selection)
@@ -43,7 +46,7 @@ namespace PetShop.Consol
                         Console.WriteLine("The pet {0} has been added", pet.name);
                         break;
                     case 2:
-                        listAllPets();
+                        PrintPets(_petserv.GetPets());
                         break;
                     case 3:
                         pet = DeletePet();
@@ -56,6 +59,23 @@ namespace PetShop.Consol
                         }
                         break;
                     case 4:
+                        pet = UpdatePet();
+                        if (pet == null)
+                        {
+                            Console.WriteLine("Could not find a pet with that Id. No pet got updated");
+                        } else
+                        {
+                            Console.WriteLine("The pet has been updated to {0} succesfully", pet.name);
+                        }
+                        break;
+                    case 5:
+                        PrintPetsByType();
+                        break;
+                    case 6:
+                        PrintPets(_petserv.GetPetsByOrderedPrice());
+                        break;
+                    case 7:
+                        PrintPets(_petserv.GetFiveCheapestPets());
                         break;
                 }
                 Console.WriteLine("Press enter to continue...");
@@ -76,6 +96,7 @@ namespace PetShop.Consol
             while (!int.TryParse(Console.ReadLine(), out parsing))
             {
                 Console.WriteLine("Please type a number");
+                Console.Write("Number: ");
             }
             return parsing;
         }
@@ -84,9 +105,10 @@ namespace PetShop.Consol
         {
             Console.Write("Please type a number: ");
             int selection = parseThisInteger();
-            while (selection < 1 || selection > 5)
+            while (selection < 1 || selection > itemList.Length)
             {
-                Console.WriteLine("Please choose a number thats between 1-5");
+                Console.WriteLine("Please choose a number thats between 1-{0}", itemList.Length);
+                Console.Write("Number: ");
                 selection = parseThisInteger();
             }
             return selection;
@@ -101,14 +123,14 @@ namespace PetShop.Consol
             }
         }
 
-        private void listAllPets()
+        private void PrintPets(List<Pet> pets)
         {
-            if (_petserv.GetPets().Count == 0)
+            if (pets.Count == 0)
             {
                 Console.WriteLine("You have no pets to show");
             } else
             {
-                foreach (Pet pet in _petserv.GetPets())
+                foreach (Pet pet in pets)
                 {
                     Console.WriteLine("----------------------");
                     Console.WriteLine("Id: {0}", pet.id);
@@ -125,18 +147,24 @@ namespace PetShop.Consol
 
         private Pet CreatePet()
         {
+            Pet pet = createAPetObject();
+            return _petserv.CreatePet(pet);
+        }
+
+        private Pet createAPetObject()
+        {
             Console.Write("Please type the pets name: ");
-            string name = Console.ReadLine();
-            Console.Write("Please type the pets specie: ");
+            string name = validateString();
+            Console.Write("Please insert the pets type: ");
             PetTypes type = getPetType();
             Console.Write("Please type the pets birth date: ");
             DateTime birthDate = validateTime();
             Console.Write("Please type the pets sold date: ");
             DateTime soldDate = validateTime();
             Console.Write("Please type the pets color/colors: ");
-            string color = Console.ReadLine();
+            string color = validateString();
             Console.Write("Please type the pets previous owner or \"none\": ");
-            string previousOwner = Console.ReadLine();
+            string previousOwner = validateString();
             Console.Write("Please insert the pets price: ");
             double price = parseThatDouble();
 
@@ -151,7 +179,7 @@ namespace PetShop.Consol
                 price = price
             };
 
-            return _petserv.CreatePet(pet);
+            return pet;
         }
 
         private PetTypes getPetType()
@@ -201,15 +229,90 @@ namespace PetShop.Consol
         {
             Console.Write("Type the id of the pet you want to delete: ");
             int petId = parseThisInteger();
-            foreach(Pet pet in _petserv.GetPets())
+            Pet pet = _petserv.GetPet(petId);
+            if (pet != null)
             {
-                if (pet.id == petId)
-                {
-                    return _petserv.DeletePet(pet);
-                }
+                return _petserv.DeletePet(pet);
             }
-            return null;
+            else
+            {
+                return null;
+            }
         }
+
+        private Pet UpdatePet()
+        {
+            Console.Write("Type the id of the pet you want to update: ");
+            int petId = parseThisInteger();
+            Pet petToUpdate = _petserv.GetPet(petId);
+            if (petToUpdate != null)
+            {
+                Console.WriteLine("Please type the new informations for this pet to update it:");
+                Pet updatedPet = createAPetObject();
+                return _petserv.UpdatePet(petToUpdate, updatedPet);
+            } else
+            {
+                return null;
+            }
+        }
+
+        private void PrintPetsByType()
+        {
+            printAllPetTypes();
+            Console.Write("Please enter the type of pets you want to be shown: ");
+            PetTypes type = getPetType();
+            List<Pet> petsByType = _petserv.GetPetsByType(type);
+            if (petsByType.Count == 0)
+            {
+                Console.WriteLine("There are no pets by that type to be shown");
+            } else
+            {
+                PrintPets(petsByType);
+            }
+        }
+
+        private string validateString()
+        {
+            string toBeValidated = Console.ReadLine();
+            bool isValidated = false;
+            while(!isValidated)
+            {
+                bool isEmpty = false;
+                bool isNumber = false;
+                if (String.IsNullOrEmpty(toBeValidated))
+                {
+                    isEmpty = true;
+                }
+                else
+                {
+                    foreach (Char cha in toBeValidated.ToCharArray(0, toBeValidated.Length))
+                    {
+                        if (char.IsDigit(cha))
+                        {
+                            isNumber = true;
+                            break;
+                        }
+                    }
+                }
+                if (isEmpty)
+                {
+                    Console.WriteLine("You have to type something");
+                    Console.Write("Please try again: ");
+                    toBeValidated = Console.ReadLine();
+                } else if (isNumber)
+                {
+                    Console.WriteLine("Your input cannot contain a number");
+                    Console.Write("Please try again: ");
+                    toBeValidated = Console.ReadLine();
+                } else
+                {
+                    isValidated = true;
+                }
+
+            }
+            return toBeValidated;
+        }
+
 
     }
 }

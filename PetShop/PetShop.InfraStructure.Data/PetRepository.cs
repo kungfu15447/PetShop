@@ -21,9 +21,22 @@ namespace PetShop.InfraStructure.Data
         public Pet DeletePet(Pet pet)
         {
             List<Pet> pets = FakeDB.petList.ToList();
-            pets.Remove(pet);
+            pets.Remove(pet); 
             FakeDB.petList = pets;
             return pet;
+        }
+
+        public Pet readPet(int id)
+        {
+            List<Pet> pets = FakeDB.petList.ToList();
+            foreach(Pet pet in pets)
+            {
+                if (id == pet.id)
+                {
+                    return pet;
+                }
+            }
+            return null;
         }
 
         public IEnumerable<Pet> ReadPets()
@@ -33,7 +46,22 @@ namespace PetShop.InfraStructure.Data
 
         public Pet UpdatePet(Pet petToUpdate, Pet updatedPet)
         {
-            throw new NotImplementedException();
+            List<Pet> pets = FakeDB.petList.ToList();
+            foreach(Pet pet in pets)
+            {
+                if (pet.id == petToUpdate.id)
+                {
+                    pet.name = updatedPet.name;
+                    pet.type = updatedPet.type;
+                    pet.birthDate = updatedPet.birthDate;
+                    pet.soldDate = updatedPet.soldDate;
+                    pet.color = updatedPet.color;
+                    pet.previousOwner = updatedPet.previousOwner;
+                    pet.price = updatedPet.price;
+                }
+            }
+            FakeDB.petList = pets;
+            return updatedPet;
         }
     }
 }
