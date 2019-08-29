@@ -28,6 +28,7 @@ namespace PetShop.Consol
             };
         }
 
+        #region Menu stuff
         public void startUI()
         {
             Console.WriteLine("Welcome to PetShop");
@@ -90,30 +91,6 @@ namespace PetShop.Consol
             
         }
 
-        private int parseThisInteger()
-        {
-            int parsing;
-            while (!int.TryParse(Console.ReadLine(), out parsing))
-            {
-                Console.WriteLine("Please type a number");
-                Console.Write("Number: ");
-            }
-            return parsing;
-        }
-
-        private int parseSelection()
-        {
-            Console.Write("Please type a number: ");
-            int selection = parseThisInteger();
-            while (selection < 1 || selection > itemList.Length)
-            {
-                Console.WriteLine("Please choose a number thats between 1-{0}", itemList.Length);
-                Console.Write("Number: ");
-                selection = parseThisInteger();
-            }
-            return selection;
-        }
-
         private void showMenu()
         {
             Console.WriteLine("Menu:");
@@ -122,7 +99,9 @@ namespace PetShop.Consol
                 Console.WriteLine("{0}. {1}", i + 1, itemList[i]);
             }
         }
+        #endregion
 
+        #region CRUD
         private void PrintPets(List<Pet> pets)
         {
             if (pets.Count == 0)
@@ -182,17 +161,6 @@ namespace PetShop.Consol
             return pet;
         }
 
-        private PetTypes getPetType()
-        {
-            PetTypes type;
-            while (!Enum.TryParse(Console.ReadLine(), out type))
-            {               
-                Console.WriteLine("This type of pet does not exist");
-                printAllPetTypes();
-            }
-            return type;
-        }
-
         private void printAllPetTypes()
         {
             Console.WriteLine("These are the types of pet that exist");
@@ -202,27 +170,6 @@ namespace PetShop.Consol
                 Console.Write(type + " ");
             }
             Console.WriteLine();
-        }
-
-        private DateTime validateTime()
-        {
-            DateTime date;
-            while (!DateTime.TryParse(Console.ReadLine(), out date))
-            {
-                Console.WriteLine("Please type the date in the format dd/mm/yyyy");
-            }
-            return date;
-        }
-
-        private double parseThatDouble()
-        {
-            double doubleToParse;
-            while (!double.TryParse(Console.ReadLine(), out doubleToParse))
-            {
-                Console.WriteLine("Please type a number");
-                Console.Write("Number: ");
-            }
-            return doubleToParse;
         }
 
         private Pet DeletePet()
@@ -270,7 +217,9 @@ namespace PetShop.Consol
                 PrintPets(petsByType);
             }
         }
+        #endregion
 
+        #region Validation Or Parsing Code
         private string validateString()
         {
             string toBeValidated = Console.ReadLine();
@@ -313,6 +262,62 @@ namespace PetShop.Consol
             return toBeValidated;
         }
 
+        private double parseThatDouble()
+        {
+            double doubleToParse;
+            while (!double.TryParse(Console.ReadLine(), out doubleToParse))
+            {
+                Console.WriteLine("Please type a number");
+                Console.Write("Number: ");
+            }
+            return doubleToParse;
+        }
+
+        private DateTime validateTime()
+        {
+            DateTime date;
+            while (!DateTime.TryParse(Console.ReadLine(), out date))
+            {
+                Console.WriteLine("Please type the date in the format dd/mm/yyyy");
+            }
+            return date;
+        }
+
+        private int parseThisInteger()
+        {
+            int parsing;
+            while (!int.TryParse(Console.ReadLine(), out parsing))
+            {
+                Console.WriteLine("Please type a number");
+                Console.Write("Number: ");
+            }
+            return parsing;
+        }
+
+        private int parseSelection()
+        {
+            Console.Write("Please type a number: ");
+            int selection = parseThisInteger();
+            while (selection < 1 || selection > itemList.Length)
+            {
+                Console.WriteLine("Please choose a number thats between 1-{0}", itemList.Length);
+                Console.Write("Number: ");
+                selection = parseThisInteger();
+            }
+            return selection;
+        }
+
+        private PetTypes getPetType()
+        {
+            PetTypes type;
+            while (!Enum.TryParse(Console.ReadLine(), out type))
+            {
+                Console.WriteLine("This type of pet does not exist");
+                printAllPetTypes();
+            }
+            return type;
+        }
+        #endregion
 
     }
 }
