@@ -11,8 +11,10 @@ namespace PetShop.InfraStructure.Data
     {
         public Pet CreatePet(Pet pet)
         {
+            pet.id = FakeDB.id++;
             List<Pet> pets = FakeDB.petList.ToList();
             pets.Add(pet);
+            FakeDB.petList = pets;
             return pet;
         }
 

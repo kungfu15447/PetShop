@@ -38,7 +38,8 @@ namespace PetShop.Consol
                 switch (selection)
                 {
                     case 1:
-                        
+                        Pet pet = CreatePet();
+                        Console.WriteLine("The pet {0} has been added", pet.name);
                         break;
                     case 2:
                         listAllPets();
@@ -118,7 +119,73 @@ namespace PetShop.Consol
             Console.Write("Please type the pets name: ");
             string name = Console.ReadLine();
             Console.Write("Please type the pets specie: ");
-            return null;
+            PetTypes type = getPetType();
+            Console.Write("Please type the pets birth date: ");
+            DateTime birthDate = validateTime();
+            Console.Write("Please type the pets sold date: ");
+            DateTime soldDate = validateTime();
+            Console.Write("Please type the pets color/colors: ");
+            string color = Console.ReadLine();
+            Console.Write("Please type the pets previous owner or \"none\": ");
+            string previousOwner = Console.ReadLine();
+            Console.WriteLine("Please insert the pets price: ");
+            double price = parseThatDouble();
+
+            Pet pet = new Pet
+            {
+                name = name,
+                type = type,
+                birthDate = birthDate,
+                soldDate = soldDate,
+                color = color,
+                previousOwner = previousOwner,
+                price = price
+            };
+
+            return _petserv.CreatePet(pet);
+        }
+
+        private PetTypes getPetType()
+        {
+            PetTypes type;
+            while (Enum.TryParse(Console.ReadLine().ToLower(), false, out type))
+            {               
+                Console.WriteLine("This type of pet does not exist");
+                printAllPetTypes();
+            }
+            return type;
+        }
+
+        private void printAllPetTypes()
+        {
+            Console.WriteLine("These are the types of pet that exist");
+            string[] types = Enum.GetNames(typeof(PetTypes));
+            foreach (string type in types)
+            {
+                Console.Write(type + " ");
+            }
+            Console.WriteLine();
+        }
+
+        private DateTime validateTime()
+        {
+            DateTime date;
+            while (!DateTime.TryParse(Console.ReadLine(), out date))
+            {
+                Console.WriteLine("Please type the date in the format dd/mm/yyyy");
+            }
+            return date;
+        }
+
+        private double parseThatDouble()
+        {
+            double doubleToParse;
+            while (!double.TryParse(Console.ReadLine(), out doubleToParse))
+            {
+                Console.WriteLine("Please type a number");
+                Console.Write("Number: ");
+            }
+            return doubleToParse;
         }
 
     }
