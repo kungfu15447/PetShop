@@ -22,7 +22,7 @@ namespace PetShop.Core.ApplicationService.Implementation
 
         public Pet DeletePet(Pet pet)
         {
-            throw new NotImplementedException();
+            return _petRepo.DeletePet(pet);
         }
 
         public List<Pet> GetPets()

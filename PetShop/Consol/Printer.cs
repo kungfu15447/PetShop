@@ -49,7 +49,7 @@ namespace PetShop.Consol
                         pet = DeletePet();
                         if (pet == null)
                         {
-                            Console.WriteLine("Could not a pet with that Id. No pet deleted");
+                            Console.WriteLine("Could not find a pet with that Id. No pet deleted");
                         } else
                         {
                             Console.WriteLine("The pet {0} has ben succesfully deleted", pet.name);
@@ -137,7 +137,7 @@ namespace PetShop.Consol
             string color = Console.ReadLine();
             Console.Write("Please type the pets previous owner or \"none\": ");
             string previousOwner = Console.ReadLine();
-            Console.WriteLine("Please insert the pets price: ");
+            Console.Write("Please insert the pets price: ");
             double price = parseThatDouble();
 
             Pet pet = new Pet

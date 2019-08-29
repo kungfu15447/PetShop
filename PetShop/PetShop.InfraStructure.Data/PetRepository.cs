@@ -20,7 +20,10 @@ namespace PetShop.InfraStructure.Data
 
         public Pet DeletePet(Pet pet)
         {
-            throw new NotImplementedException();
+            List<Pet> pets = FakeDB.petList.ToList();
+            pets.Remove(pet);
+            FakeDB.petList = pets;
+            return pet;
         }
 
         public IEnumerable<Pet> ReadPets()
