@@ -278,7 +278,8 @@ namespace PetShop.Consol
             DateTime date;
             while (!DateTime.TryParse(Console.ReadLine(), out date))
             {
-                Console.WriteLine("Please type the date in the format dd/mm/yyyy");
+                Console.WriteLine("Please use the format dd/mm/yyyy or dd-mm-yyyy");
+                Console.Write("Type a new date: ");
             }
             return date;
         }
