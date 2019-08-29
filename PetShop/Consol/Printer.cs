@@ -35,16 +35,25 @@ namespace PetShop.Consol
 
             while (selection != 5)
             {
+                Pet pet;
                 switch (selection)
                 {
                     case 1:
-                        Pet pet = CreatePet();
+                        pet = CreatePet();
                         Console.WriteLine("The pet {0} has been added", pet.name);
                         break;
                     case 2:
                         listAllPets();
                         break;
                     case 3:
+                        pet = DeletePet();
+                        if (pet == null)
+                        {
+                            Console.WriteLine("Could not a pet with that Id. No pet deleted");
+                        } else
+                        {
+                            Console.WriteLine("The pet {0} has ben succesfully deleted", pet.name);
+                        }
                         break;
                     case 4:
                         break;
@@ -148,7 +157,7 @@ namespace PetShop.Consol
         private PetTypes getPetType()
         {
             PetTypes type;
-            while (Enum.TryParse(Console.ReadLine().ToLower(), false, out type))
+            while (!Enum.TryParse(Console.ReadLine(), out type))
             {               
                 Console.WriteLine("This type of pet does not exist");
                 printAllPetTypes();
@@ -186,6 +195,20 @@ namespace PetShop.Consol
                 Console.Write("Number: ");
             }
             return doubleToParse;
+        }
+
+        private Pet DeletePet()
+        {
+            Console.Write("Type the id of the pet you want to delete: ");
+            int petId = parseThisInteger();
+            foreach(Pet pet in _petserv.GetPets())
+            {
+                if (pet.id == petId)
+                {
+                    return _petserv.DeletePet(pet);
+                }
+            }
+            return null;
         }
 
     }
