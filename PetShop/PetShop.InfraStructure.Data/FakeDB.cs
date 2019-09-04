@@ -8,7 +8,9 @@ namespace PetShop.InfraStructure.Data
     public class FakeDB
     {
         public static int id = 1;
+        public static int ownerID = 1;
         public static IEnumerable<Pet> petList;
+        public static IEnumerable<Owner> ownerList;
 
         public static void initData()
         {
@@ -121,8 +123,32 @@ namespace PetShop.InfraStructure.Data
                 price = 5000
             };
 
+            Owner owner1 = new Owner
+            {
+                id = ownerID++,
+                firstName = "Simon",
+                lastName = "Kjær",
+                address = "Stengårdsvej 12"
+            };
+
+            Owner owner2 = new Owner
+            {
+                id = ownerID++,
+                firstName = "Levis",
+                lastName = "Kjongaard",
+                address = "Hjertingvej 5"
+            };
+
+            Owner owner3 = new Owner
+            {
+                id = ownerID++,
+                firstName = "Jens",
+                lastName = "Padelsen",
+                address = "Gl. Prinsevej 25"
+            };
+
             petList = new List<Pet> { pet, pet2, pet3, pet4, pet5, pet6, pet7, pet8, pet9};
-            
+            ownerList = new List<Owner> { owner1, owner2, owner3};
         }
     }
 }
