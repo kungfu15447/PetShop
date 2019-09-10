@@ -154,7 +154,7 @@ namespace PetShop.Consol
                 birthDate = birthDate,
                 soldDate = soldDate,
                 color = color,
-                previousOwner = previousOwner,
+                previousOwner = null,
                 price = price
             };
 

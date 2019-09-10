@@ -35,12 +35,13 @@ namespace PetShop.Core.ApplicationService.Implementation
             List<Pet> fiveCheapestPets = new List<Pet>();
             IEnumerable<Pet> pets = _petRepo.ReadPets().OrderBy(pet => pet.price);
             List<Pet> petsordered = pets.ToList();
-            foreach(Pet pet in petsordered)
+            foreach (Pet pet in petsordered)
             {
                 if (fiveCheapestPets.Count == 5)
                 {
                     break;
-                } else
+                }
+                else
                 {
                     fiveCheapestPets.Add(pet);
                 }
@@ -88,17 +89,15 @@ namespace PetShop.Core.ApplicationService.Implementation
         {
             if (String.IsNullOrEmpty(pet.name))
             {
-                _errorFactory.Invalid(message:"Pet can't not have a name");
+                _errorFactory.Invalid(message: "Pet can't not have a name");
             }
-            else if (String.IsNullOrEmpty(pet.previousOwner))
+            else if (pet.birthDate > pet.soldDate)
             {
-                _errorFactory.Invalid(message:"The pet either has a owner or \"none\"");
-            }else if (pet.birthDate > pet.soldDate)
+                _errorFactory.Invalid(message: "The pets birth cant be after the pet has been sold");
+            }
+            else if (nameHasNumber(pet.name))
             {
-                _errorFactory.Invalid(message:"The pets birth cant be after the pet has been sold");
-            }else if(nameHasNumber(pet.name))
-            {
-                _errorFactory.Invalid(message:"There cant be numbers in the pets name");
+                _errorFactory.Invalid(message: "There cant be numbers in the pets name");
             }
 
         }

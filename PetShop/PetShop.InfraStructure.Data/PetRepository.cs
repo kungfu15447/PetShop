@@ -21,6 +21,15 @@ namespace PetShop.InfraStructure.Data
         public Pet DeletePet(Pet pet)
         {
             List<Pet> pets = FakeDB.petList.ToList();
+            List<PetOwner> petOwners = FakeDB.petOwnerList.ToList();
+            foreach(PetOwner petowner in petOwners)
+            {
+                if (petowner.PId == pet.id)
+                {
+                    petOwners.Remove(petowner);
+                }
+            }
+            FakeDB.petOwnerList = petOwners;
             pets.Remove(pet); 
             FakeDB.petList = pets;
             return pet;
@@ -33,6 +42,7 @@ namespace PetShop.InfraStructure.Data
             {
                 if (id == pet.id)
                 {
+                    addOwnersToPet(pet);
                     return pet;
                 }
             }
@@ -41,6 +51,11 @@ namespace PetShop.InfraStructure.Data
 
         public IEnumerable<Pet> ReadPets()
         {
+            List<Pet> petList = FakeDB.petList.ToList();
+            foreach (Pet pet in petList)
+            {
+                addOwnersToPet(pet);
+            }
             return FakeDB.petList;
         }
 
@@ -62,6 +77,22 @@ namespace PetShop.InfraStructure.Data
             }
             FakeDB.petList = pets;
             return updatedPet;
+        }
+
+        private void addOwnersToPet(Pet pet)
+        {
+            pet.owners = new List<Owner>();
+            foreach (PetOwner petowner in FakeDB.petOwnerList.ToList())
+            {
+                if (petowner.PId == pet.id)
+                {
+                    Owner owner = FakeDB.ownerList.FirstOrDefault(O => O.id == petowner.OId);
+                    if (owner != null)
+                    {
+                        pet.owners.Add(owner);
+                    }
+                }
+            }
         }
     }
 }

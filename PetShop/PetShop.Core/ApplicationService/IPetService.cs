@@ -15,5 +15,6 @@ namespace PetShop.Core.ApplicationService
         List<Pet> GetPetsByType(PetTypes type);
         List<Pet> GetPetsByOrderedPrice();
         List<Pet> GetFiveCheapestPets();
+
     }
 }
