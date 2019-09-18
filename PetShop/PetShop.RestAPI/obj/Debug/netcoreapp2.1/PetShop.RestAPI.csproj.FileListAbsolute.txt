@@ -19,3 +19,5 @@ D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\bin\Debug\netcoreapp2.1\Pet
 D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\bin\Debug\netcoreapp2.1\PetShop.Core.pdb
 D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\bin\Debug\netcoreapp2.1\PetShop.InfraStructure.Data.pdb
 D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\obj\Debug\netcoreapp2.1\PetShop.RestAPI.csproj.CopyComplete
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\bin\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.dll
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.RestAPI\bin\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.pdb

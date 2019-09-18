@@ -171,6 +171,85 @@
         }
       }
     },
+    "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\PetShop.Infrastructure.SQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\PetShop.Infrastructure.SQL.csproj",
+        "projectName": "PetShop.Infrastructure.SQL",
+        "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\PetShop.Infrastructure.SQL.csproj",
+        "packagesPath": "C:\\Users\\Frederik Jensen\\.nuget\\packages\\",
+        "outputPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Frederik Jensen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core.Entity\\PetShop.Core.Entity.csproj": {
+                "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core.Entity\\PetShop.Core.Entity.csproj"
+              },
+              "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core\\PetShop.Core.csproj": {
+                "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Core\\PetShop.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.RestAPI\\PetShop.RestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -205,6 +284,9 @@
               },
               "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.InfraStructure.Data\\PetShop.InfraStructure.Data.csproj": {
                 "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.InfraStructure.Data\\PetShop.InfraStructure.Data.csproj"
+              },
+              "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\PetShop.Infrastructure.SQL.csproj": {
+                "projectPath": "D:\\Dokumenter\\GitHub\\PetShop\\PetShop\\PetShop.Infrastructure.SQL\\PetShop.Infrastructure.SQL.csproj"
               }
             }
           }
@@ -228,6 +310,22 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
             },
             "Microsoft.NETCore.App": {
               "target": "Package",

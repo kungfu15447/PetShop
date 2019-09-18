@@ -6,7 +6,10 @@ namespace PetShop.Core.Entity
 {
     public class PetOwner
     {
-        public int OId { get; set; }
-        public int PId { get; set; }
+        public int Id { get; set; }
+        public int OwnerId { get; set; }
+        public Owner Owner { get; set; }
+        public int PetId { get; set; }
+        public Pet Pet { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.deps.json
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.dll
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Core.dll
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Core.Entity.dll
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Core.Entity.pdb
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Core.pdb
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.csprojAssemblyReference.cache
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.csproj.CoreCompileInputs.cache
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.AssemblyInfoInputs.cache
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.AssemblyInfo.cs
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.csproj.CopyComplete
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\bin\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.pdb
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.dll
+D:\Dokumenter\GitHub\PetShop\PetShop\PetShop.Infrastructure.SQL\obj\Debug\netcoreapp2.1\PetShop.Infrastructure.SQL.pdb

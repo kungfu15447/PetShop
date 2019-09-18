@@ -41,7 +41,28 @@ namespace PetShop.InfraStructure.Data
 
         public IEnumerable<Owner> ReadOwners()
         {
+            List<Owner> owners = FakeDB.ownerList.ToList();
+            foreach (Owner owner in owners)
+            {
+                AddPetsToOwner(owner);
+            }
             return FakeDB.ownerList;
+        }
+
+        private void AddPetsToOwner(Owner owner)
+        {
+            //owner.pets = new List<Pet>();
+            foreach (PetOwner petowner in FakeDB.petOwnerList.ToList())
+            {
+                if (petowner.OwnerId == owner.id)
+                {
+                    Pet pet = FakeDB.petList.FirstOrDefault(P => P.id == petowner.PetId);
+                    if (pet != null)
+                    {
+                        //owner.pets.Add(pet);
+                    }
+                }
+            }
         }
 
         public Owner UpdateOwner(Owner toBeUpdated, Owner updatedOwner)
