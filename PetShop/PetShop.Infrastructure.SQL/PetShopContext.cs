@@ -15,6 +15,7 @@ namespace PetShop.Infrastructure.SQL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Pet>()
                 .HasMany(p => p.ownersHistory)
                 .WithOne(po => po.Pet)
