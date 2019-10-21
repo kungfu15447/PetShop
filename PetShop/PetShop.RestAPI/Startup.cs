@@ -19,6 +19,7 @@ using PetShop.Core.ApplicationService.Implementation;
 using PetShop.Core.DomainService;
 using PetShop.Core.ExceptionHandling;
 using PetShop.Infrastructure.SQL;
+using PetShop.Infrastructure.SQL.Helper;
 using PetShop.Infrastructure.SQL.Repositories;
 using PetShop.InfraStructure.Data;
 using PetShop.RestAPI.Initializer;

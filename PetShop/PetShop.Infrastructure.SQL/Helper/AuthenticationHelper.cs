@@ -3,10 +3,11 @@ using PetShop.Core.Entity;
 using System;
 using System.Security.Claims;
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 
-namespace PetShop.Infrastructure.SQL.Repositories
+namespace PetShop.Infrastructure.SQL.Helper
 {
     public class AuthenticationHelper : IAuthenticationHelper
     {
@@ -18,7 +19,7 @@ namespace PetShop.Infrastructure.SQL.Repositories
         }
         public string GenerateToken(Owner owner)
         {
-            /*var claims = new List<Claim>
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, owner.username)
             };
@@ -38,8 +39,7 @@ namespace PetShop.Infrastructure.SQL.Repositories
                                DateTime.Now,               // notBefore
                                DateTime.Now.AddMinutes(10)));  // expires
 
-            return new JwtSecurityTokenHandler().WriteToken(token);*/
-            return "";
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
