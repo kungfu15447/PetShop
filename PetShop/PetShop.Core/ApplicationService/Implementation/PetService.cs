@@ -33,7 +33,7 @@ namespace PetShop.Core.ApplicationService.Implementation
         public List<Pet> GetFiveCheapestPets()
         {
             List<Pet> fiveCheapestPets = new List<Pet>();
-            IEnumerable<Pet> pets = _petRepo.ReadPets().OrderBy(pet => pet.price);
+            IEnumerable<Pet> pets = _petRepo.ReadPets(null).OrderBy(pet => pet.price);
             List<Pet> petsordered = pets.ToList();
             foreach (Pet pet in petsordered)
             {
@@ -54,14 +54,26 @@ namespace PetShop.Core.ApplicationService.Implementation
             return _petRepo.readPet(id);
         }
 
-        public List<Pet> GetPets()
+        public List<Pet> GetPets(Filter filter)
         {
-            return _petRepo.ReadPets().ToList();
+            if (filter == null)
+            {
+                return _petRepo.ReadPets(null).ToList();
+            }
+            if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
+            {
+                _errorFactory.Invalid(message: "Current page and items per page index must be 0 or more");
+            }
+            if ((filter.CurrentPage -1 * filter.ItemsPrPage) >= _petRepo.Count())
+            {
+                _errorFactory.Invalid(message: "Index out of bounds. Current page is too high");
+            }
+            return _petRepo.ReadPets(filter).ToList();
         }
 
         public List<Pet> GetPetsByOrderedPrice()
         {
-            IEnumerable<Pet> pets = _petRepo.ReadPets().OrderBy(pet => pet.price);
+            IEnumerable<Pet> pets = _petRepo.ReadPets(null).OrderBy(pet => pet.price);
 
             return pets.ToList();
         }
@@ -69,7 +81,7 @@ namespace PetShop.Core.ApplicationService.Implementation
         public List<Pet> GetPetsByType(PetTypes type)
         {
             List<Pet> petsByType = new List<Pet>();
-            List<Pet> pets = _petRepo.ReadPets().ToList();
+            List<Pet> pets = _petRepo.ReadPets(null).ToList();
             foreach (Pet pet in pets)
             {
                 if (type == pet.type)
@@ -80,9 +92,9 @@ namespace PetShop.Core.ApplicationService.Implementation
             return petsByType;
         }
 
-        public Pet UpdatePet(Pet petToUpdate, Pet updatedPet)
+        public Pet UpdatePet(Pet petToUpdate)
         {
-            return _petRepo.UpdatePet(petToUpdate, updatedPet);
+            return _petRepo.UpdatePet(petToUpdate);
         }
 
         private void validatePet(Pet pet)
@@ -115,7 +127,6 @@ namespace PetShop.Core.ApplicationService.Implementation
             }
             return isNumber;
         }
-
 
     }
 }

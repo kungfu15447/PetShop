@@ -16,6 +16,12 @@ namespace PetShop.Infrastructure.SQL.Repositories
         {
             _context = context;
         }
+
+        public int Count()
+        {
+            return _context.Pets.Count();
+        }
+
         public Pet CreatePet(Pet pet)
         {
             _context.Attach(pet).State = EntityState.Added;
@@ -39,17 +45,37 @@ namespace PetShop.Infrastructure.SQL.Repositories
                 .FirstOrDefault(p => p.id == id);
         }
 
-        public IEnumerable<Pet> ReadPets()
+        public IEnumerable<Pet> ReadPets(Filter filter)
         {
+            if (filter != null && filter.ItemsPrPage > 0 && filter.CurrentPage > 0)
+            {
+                var filteredList = _context.Pets
+                    .Include(o => o.ownersHistory)
+                    .ThenInclude(po => po.Owner)
+                    .Skip((filter.CurrentPage - 1) * filter.ItemsPrPage)
+                    .Take(filter.ItemsPrPage);
+                return filteredList.ToList();
+            }
             return _context.Pets
                 .Include(o => o.ownersHistory)
-                .ThenInclude(po => po.Owner)
-                .ToList();
+                .ThenInclude(po => po.Owner).ToList();
         }
 
-        public Pet UpdatePet(Pet petToUpdate, Pet updatedPet)
+        public Pet UpdatePet(Pet petToUpdate)
         {
-            throw new NotImplementedException();
+            _context.Attach(petToUpdate).State = EntityState.Modified;
+            // _context.Entry(petToUpdate).Collection(p => p.ownersHistory).IsModified = true;
+
+            var petOwners = new List<PetOwner>(petToUpdate.ownersHistory ?? new List<PetOwner>());
+            _context.PetOwners.RemoveRange(
+                _context.PetOwners.Where(p => p.PetId == petToUpdate.id)
+             );
+            foreach (var po in petOwners)
+            {
+                _context.Entry(po).State = EntityState.Added;
+            }
+            _context.SaveChanges();
+            return petToUpdate;
         }
     }
 }

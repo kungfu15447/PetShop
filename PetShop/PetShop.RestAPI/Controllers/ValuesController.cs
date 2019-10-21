@@ -22,7 +22,7 @@ namespace PetShop.RestAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Pet>> Get()
         {
-            return _petService.GetPets();
+            return _petService.GetPets(null);
         }
 
         // GET api/pet/5

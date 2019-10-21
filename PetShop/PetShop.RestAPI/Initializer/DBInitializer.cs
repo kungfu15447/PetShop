@@ -69,9 +69,9 @@ namespace PetShop.RestAPI.Initializer
             pet1.ownersHistory.Add(PetOwner1);
             pet1.ownersHistory.Add(PetOwner2);
             pet2.ownersHistory.Add(PetOwner3);
-
-            pet1 = ctx.Pets.Add(pet1).Entity;
-            pet1 = ctx.Pets.Add(pet2).Entity;
+            
+            ctx.Pets.Add(pet1);
+            ctx.Pets.Add(pet2);
 
             
 

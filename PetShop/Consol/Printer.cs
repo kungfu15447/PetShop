@@ -47,7 +47,7 @@ namespace PetShop.Consol
                         Console.WriteLine("The pet {0} has been added", pet.name);
                         break;
                     case 2:
-                        PrintPets(_petserv.GetPets());
+                        PrintPets(_petserv.GetPets(null));
                         break;
                     case 3:
                         pet = DeletePet();
@@ -117,7 +117,6 @@ namespace PetShop.Consol
                     Console.WriteLine("Type: {0}", pet.type);
                     Console.WriteLine("Birth Date: {0}", pet.birthDate.ToString("dd/MM/yyyy"));
                     Console.WriteLine("Sold Date: {0}", pet.soldDate.ToString("dd/MM/yyyy"));
-                    Console.WriteLine("Previous Owner: {0}", pet.previousOwner);
                     Console.WriteLine("Price: {0}", pet.price);
                     Console.WriteLine("----------------------");
                 }
@@ -142,8 +141,6 @@ namespace PetShop.Consol
             DateTime soldDate = validateTime();
             Console.Write("Please type the pets color/colors: ");
             string color = validateString();
-            Console.Write("Please type the pets previous owner or \"none\": ");
-            string previousOwner = validateString();
             Console.Write("Please insert the pets price: ");
             double price = parseThatDouble();
 
@@ -154,7 +151,6 @@ namespace PetShop.Consol
                 birthDate = birthDate,
                 soldDate = soldDate,
                 color = color,
-                previousOwner = null,
                 price = price
             };
 
@@ -196,7 +192,7 @@ namespace PetShop.Consol
             {
                 Console.WriteLine("Please type the new informations for this pet to update it:");
                 Pet updatedPet = createAPetObject();
-                return _petserv.UpdatePet(petToUpdate, updatedPet);
+                return _petserv.UpdatePet(updatedPet);
             } else
             {
                 return null;

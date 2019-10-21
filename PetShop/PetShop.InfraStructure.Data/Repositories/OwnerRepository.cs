@@ -39,7 +39,7 @@ namespace PetShop.InfraStructure.Data
             return null;
         }
 
-        public IEnumerable<Owner> ReadOwners()
+        public IEnumerable<Owner> ReadOwners(Filter filter)
         {
             List<Owner> owners = FakeDB.ownerList.ToList();
             foreach (Owner owner in owners)
@@ -78,6 +78,11 @@ namespace PetShop.InfraStructure.Data
                 }
             }
             return updatedOwner;
+        }
+
+        public int Count()
+        {
+            throw new NotImplementedException();
         }
     }
 }

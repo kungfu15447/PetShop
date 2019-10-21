@@ -7,10 +7,10 @@ namespace PetShop.Core.ApplicationService
 {
     public interface IPetService
     {
-        List<Pet> GetPets();
+        List<Pet> GetPets(Filter filter);
         Pet CreatePet(Pet pet);
         Pet DeletePet(Pet pet);
-        Pet UpdatePet(Pet petToUpdate, Pet updatedPet);
+        Pet UpdatePet(Pet petToUpdate);
         Pet GetPet(int id);
         List<Pet> GetPetsByType(PetTypes type);
         List<Pet> GetPetsByOrderedPrice();

@@ -22,9 +22,20 @@ namespace PetShop.RestAPI.Controllers
 
         // GET api/Pets
         [HttpGet]
-        public ActionResult<IEnumerable<Pet>> Get()
+        public ActionResult<List<Pet>> Get([FromQuery] Filter filter)
         {
-            return Ok(_petService.GetPets());
+            try
+            {
+                if (filter.CurrentPage == 0 && filter.ItemsPrPage == 0)
+                {
+                    return Ok(_petService.GetPets(null));
+                }
+                return Ok(_petService.GetPets(filter));
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpGet("{id}")]
@@ -50,8 +61,7 @@ namespace PetShop.RestAPI.Controllers
         [HttpPut("{id}")]
         public ActionResult<Pet> Put(int id, [FromBody] Pet updatedPet)
         {
-            Pet petToUpdate = _petService.GetPet(id);
-            return Ok(_petService.UpdatePet(petToUpdate, updatedPet));
+            return Ok(_petService.UpdatePet(updatedPet));
         }
 
         // DELETE api/pet/5

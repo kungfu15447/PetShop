@@ -9,6 +9,11 @@ namespace PetShop.InfraStructure.Data
 {
     public class PetRepository : IPetRepository
     {
+        public int Count()
+        {
+            throw new NotImplementedException();
+        }
+
         public Pet CreatePet(Pet pet)
         {
             pet.id = FakeDB.id++;
@@ -49,7 +54,7 @@ namespace PetShop.InfraStructure.Data
             return null;
         }
 
-        public IEnumerable<Pet> ReadPets()
+        public IEnumerable<Pet> ReadPets(Filter filter)
         {
             List<Pet> petList = FakeDB.petList.ToList();
             foreach (Pet pet in petList)
@@ -59,23 +64,23 @@ namespace PetShop.InfraStructure.Data
             return FakeDB.petList;
         }
 
-        public Pet UpdatePet(Pet petToUpdate, Pet updatedPet)
+        public Pet UpdatePet(Pet petToUpdate)
         {
             List<Pet> pets = FakeDB.petList.ToList();
             foreach(Pet pet in pets)
             {
                 if (pet.id == petToUpdate.id)
                 {
-                    pet.name = updatedPet.name;
-                    pet.type = updatedPet.type;
-                    pet.birthDate = updatedPet.birthDate;
-                    pet.soldDate = updatedPet.soldDate;
-                    pet.color = updatedPet.color;
-                    pet.price = updatedPet.price;
+                    pet.name = petToUpdate.name;
+                    pet.type = petToUpdate.type;
+                    pet.birthDate = petToUpdate.birthDate;
+                    pet.soldDate = petToUpdate.soldDate;
+                    pet.color = petToUpdate.color;
+                    pet.price = petToUpdate.price;
                 }
             }
             FakeDB.petList = pets;
-            return updatedPet;
+            return petToUpdate;
         }
 
         private void addOwnersToPet(Pet pet)
