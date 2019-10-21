@@ -1,8 +1,6 @@
 ﻿using PetShop.Core.DomainService;
 using PetShop.Core.Entity;
 using System;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -20,7 +18,7 @@ namespace PetShop.Infrastructure.SQL.Repositories
         }
         public string GenerateToken(Owner owner)
         {
-            var claims = new List<Claim>
+            /*var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, owner.username)
             };
@@ -40,7 +38,8 @@ namespace PetShop.Infrastructure.SQL.Repositories
                                DateTime.Now,               // notBefore
                                DateTime.Now.AddMinutes(10)));  // expires
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtSecurityTokenHandler().WriteToken(token);*/
+            return "";
         }
     }
 }
